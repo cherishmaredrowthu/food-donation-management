@@ -46,7 +46,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const fetchUser = async () => {
     try {
-      const response = await axios.get('/api/auth/profile');
+      const response = await axios.get('https://food-donation-backend-0wjr.onrender.com/api/auth/profile');
       setUser(response.data.user);
     } catch (error) {
       localStorage.removeItem('token');
@@ -97,7 +97,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const updateUser = async (userData: Partial<User>) => {
     try {
-      const response = await axios.put('/api/auth/profile', userData);
+      const response = await axios.put('https://food-donation-backend-0wjr.onrender.com/api/auth/profile', userData);
       setUser(response.data.user);
       toast.success('Profile updated successfully');
     } catch (error: any) {
