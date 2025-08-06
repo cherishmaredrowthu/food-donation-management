@@ -74,7 +74,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const register = async (userData: any) => {
     try {
-      const response = await axios.post('/api/auth/register', userData);
+      const response = await axios.post('https://food-donation-backend-0wjr.onrender.com/api/auth/register', userData);
       const { token, user } = response.data;
       
       localStorage.setItem('token', token);
