@@ -58,7 +58,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (email: string, password: string) => {
     try {
-      const response = await axios.post('/api/auth/login', { email, password });
+      const response = await axios.post('https://food-donation-backend-0wjr.onrender.com/api/auth/login', { email, password });
       const { token, user } = response.data;
       
       localStorage.setItem('token', token);
