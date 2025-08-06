@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Install all dependencies (root, client, server)",
+			"command": "npm run install-all",
+			"group": "build",
+			"isBackground": false
+		}
+	]
+}
