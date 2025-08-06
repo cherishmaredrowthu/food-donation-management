@@ -21,7 +21,8 @@ connectDB();
 // Security middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CLIENT_URL || "https://food-donation-management.vercel.app/",
+
+  origin: process.env.CLIENT_URL || "https://food-donation-management.vercel.app",
   credentials: true
 }));
 
