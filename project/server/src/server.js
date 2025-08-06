@@ -13,7 +13,7 @@ import { startCleanupJob } from './services/cleanup.js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || "https://food-donation-backend-0wjr.onrender.com" || 5000;
+const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
 connectDB();
@@ -21,7 +21,7 @@ connectDB();
 // Security middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CLIENT_URL || "https://food-donation-frontend-r4r8.onrender.com",
+  origin: process.env.CLIENT_URL || "https://food-donation-management.vercel.app/",
   credentials: true
 }));
 
