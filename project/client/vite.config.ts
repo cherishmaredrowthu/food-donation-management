@@ -7,7 +7,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: "https://food-donation-backend-0wjr.onrender.com",
         changeOrigin: true,
       },
     },
