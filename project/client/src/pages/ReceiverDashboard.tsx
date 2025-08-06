@@ -42,8 +42,8 @@ export default function ReceiverDashboard() {
   const fetchDonations = async () => {
     try {
       const [availableRes, acceptedRes] = await Promise.all([
-        axios.get('/api/donations/available'),
-        axios.get('/api/donations/accepted')
+        axios.get('https://food-donation-backend-0wjr.onrender.com/api/donations/available'),
+        axios.get('https://food-donation-backend-0wjr.onrender.com/api/donations/accepted')
       ]);
       
       setAvailableDonations(availableRes.data.donations);
@@ -58,7 +58,7 @@ export default function ReceiverDashboard() {
 
   const handleAcceptDonation = async (donationId: string) => {
     try {
-      await axios.post(`/api/donations/${donationId}/accept`);
+      await axios.post(`https://food-donation-backend-0wjr.onrender.com/api/donations/${donationId}/accept`);
       await fetchDonations(); // Refresh data
     } catch (error: any) {
       console.error('Error accepting donation:', error);
@@ -67,7 +67,7 @@ export default function ReceiverDashboard() {
 
   const handleMarkComplete = async (donationId: string) => {
     try {
-      await axios.post(`/api/donations/${donationId}/complete`);
+      await axios.post(`https://food-donation-backend-0wjr.onrender.com/api/donations/${donationId}/complete`);
       await fetchDonations(); // Refresh data
     } catch (error: any) {
       console.error('Error marking donation complete:', error);

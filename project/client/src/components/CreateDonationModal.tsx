@@ -33,7 +33,7 @@ export default function CreateDonationModal({ onClose, onDonationCreated }: Crea
   const onSubmit = async (data: DonationForm) => {
     setLoading(true);
     try {
-      const response = await axios.post('/api/donations', data);
+      const response = await axios.post('https://food-donation-backend-0wjr.onrender.com/api/donations', data);
       onDonationCreated(response.data.donation);
       toast.success('Donation posted successfully!');
     } catch (error: any) {

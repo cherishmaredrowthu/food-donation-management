@@ -37,7 +37,7 @@ export default function DonorDashboard() {
 
   const fetchDonations = async () => {
     try {
-      const response = await axios.get('/api/donations/my-donations');
+      const response = await axios.get('https://food-donation-backend-0wjr.onrender.com/api/donations/my-donations');
       setDonations(response.data.donations);
     } catch (error) {
       console.error('Error fetching donations:', error);
