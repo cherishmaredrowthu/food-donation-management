@@ -29,7 +29,7 @@ const createTransporter = () => {
 export async function sendDonationNotification(donation, receiver) {
   const transporter = createTransporter();
   
-  const donationLink = `${process.env.CLIENT_URL}/dashboard`;
+  const donationLink = `${process.env.CLIENT_URL}/api/auth/login`;
   const mapsLink = `https://www.google.com/maps/search/?api=1&query=${donation.location.coordinates[0]},${donation.location.coordinates[1]}`;
   
   const emailContent = {
