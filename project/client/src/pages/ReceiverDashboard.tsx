@@ -32,6 +32,15 @@ export default function ReceiverDashboard() {
   const [showSettings, setShowSettings] = useState(false);
   const [loading, setLoading] = useState(true);
   const [notifications, setNotifications] = useState(0);
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  const toggleNotifications = () => {
+  setShowNotifications(prev => !prev);
+  };
+
+   const sampleNotifications = availableDonations.map((donation) => (
+  `New donation: ${donation.foodType} (${donation.quantity} servings)`
+   ));
 
   useEffect(() => {
     fetchDonations();
@@ -93,13 +102,34 @@ export default function ReceiverDashboard() {
         
         <div className="flex items-center space-x-4 mt-4 sm:mt-0">
           <div className="relative">
-            <Bell className="h-6 w-6 text-gray-600" />
-            {notifications > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                {notifications}
-              </span>
-            )}
-          </div>
+  <div onClick={toggleNotifications} className="cursor-pointer">
+    <Bell className="h-6 w-6 text-gray-600" />
+    {notifications > 0 && (
+      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+        {notifications}
+      </span>
+    )}
+  </div>
+
+  {showNotifications && (
+    <div className="absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+      <ul className="max-h-60 overflow-y-auto">
+        {sampleNotifications.length > 0 ? (
+          sampleNotifications.map((note, index) => (
+            <li
+              key={index}
+              className="px-4 py-2 text-sm text-gray-800 hover:bg-gray-100"
+            >
+              {note}
+            </li>
+          ))
+        ) : (
+          <li className="px-4 py-2 text-sm text-gray-500">No new notifications</li>
+        )}
+      </ul>
+    </div>
+  )}
+</div>
           
           <button
             onClick={() => setShowSettings(true)}
