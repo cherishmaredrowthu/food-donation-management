@@ -193,6 +193,7 @@ router.post('/:id/accept', auth, async (req, res) => {
 
     const receiver = await User.findById(req.user.userId);
     await sendDonationUpdateEmail(donation, receiver, 'accepted');
+
     res.json({ message: 'Donation accepted successfully', donation });
   } catch (error) {
     console.error('Accept donation error:', error);
@@ -224,6 +225,7 @@ router.post('/:id/complete', auth, async (req, res) => {
     donation.completedAt = new Date();
     await donation.save();
 
+    await sendDonationUpdateEmail(donation, receiver, 'completed');
     res.json({ message: 'Donation marked as completed', donation });
   } catch (error) {
     console.error('Complete donation error:', error);
